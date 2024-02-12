@@ -1,0 +1,120 @@
+[gd_scene load_steps=10 format=3 uid="uid://37kt12rcqe05"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_6vv1y"]
+[ext_resource type="AudioStream" uid="uid://c173xyh4iuipt" path="res://Audio/jump.wav" id="2_k8oov"]
+[ext_resource type="AudioStream" uid="uid://4nibu4yk0hcq" path="res://Audio/land.wav" id="3_d1e4c"]
+[ext_resource type="AudioStream" uid="uid://dat06g5gxgvii" path="res://Audio/dash.wav" id="4_8o463"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ngntg"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ppdfh"]
+material = SubResource("StandardMaterial3D_ngntg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2paf"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_txonb"]
+material = SubResource("StandardMaterial3D_s2paf")
+radius = 0.1
+height = 0.2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qpx44"]
+
+[node name="Player" type="CharacterBody3D" groups=["player"]]
+script = ExtResource("1_6vv1y")
+
+[node name="CameraGimbal" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.655373, 0)
+
+[node name="InnerGimbal" type="Node3D" parent="CameraGimbal"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, 0, 1, 0, 0, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraGimbal/InnerGimbal"]
+spring_length = 6.0
+margin = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="CameraGimbal/InnerGimbal/SpringArm3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.38419e-07, 6)
+
+[node name="Meshes" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="BodyMesh" type="MeshInstance3D" parent="Meshes"]
+unique_name_in_owner = true
+mesh = SubResource("CapsuleMesh_ppdfh")
+skeleton = NodePath("../..")
+
+[node name="EyeLeft" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.172346, 0.501303, -0.459973)
+mesh = SubResource("SphereMesh_txonb")
+skeleton = NodePath("../BodyMesh")
+
+[node name="EyeRight" type="MeshInstance3D" parent="Meshes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.172, 0.501, -0.46)
+mesh = SubResource("SphereMesh_txonb")
+skeleton = NodePath("../BodyMesh")
+
+[node name="WallChecking" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="WallCheck" type="RayCast3D" parent="WallChecking"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.462481, 0)
+target_position = Vector3(0, 0, -1)
+
+[node name="StillOnWallCheck" type="RayCast3D" parent="WallChecking"]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -1)
+
+[node name="StickPointHolder" type="Marker3D" parent="WallChecking"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.499888)
+
+[node name="StickPoint" type="Marker3D" parent="WallChecking/StickPointHolder"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+
+[node name="Audio" type="Node3D" parent="."]
+
+[node name="JumpAudio" type="AudioStreamPlayer" parent="Audio"]
+unique_name_in_owner = true
+stream = ExtResource("2_k8oov")
+
+[node name="LandAudio" type="AudioStreamPlayer" parent="Audio"]
+unique_name_in_owner = true
+stream = ExtResource("3_d1e4c")
+
+[node name="DashAudio" type="AudioStreamPlayer" parent="Audio"]
+unique_name_in_owner = true
+stream = ExtResource("4_8o463")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_qpx44")
+
+[node name="DashLengthTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="DashGhostTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="TimeBetweenDashesTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+one_shot = true
+
+[node name="GameStartBufferTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.2
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="DashLengthTimer" to="." method="_on_dash_length_timer_timeout"]
+[connection signal="timeout" from="DashGhostTimer" to="." method="_on_dash_ghost_timer_timeout"]
+[connection signal="timeout" from="TimeBetweenDashesTimer" to="." method="_on_time_between_dashes_timer_timeout"]

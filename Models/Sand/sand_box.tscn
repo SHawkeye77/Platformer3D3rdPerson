@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwuu5gldsb48m"]
+
+[ext_resource type="Texture2D" uid="uid://b1r67u32e3u0s" path="res://Textures/Sand/Ground052_1K-JPG_Color.jpg" id="1_q0ss0"]
+[ext_resource type="Texture2D" uid="uid://cjaa6yl7yxtt1" path="res://Textures/Sand/Ground052_1K-JPG_AmbientOcclusion.jpg" id="2_nb4e4"]
+[ext_resource type="Texture2D" uid="uid://b4a2iwwyylena" path="res://Textures/Sand/Ground052_1K-JPG_Displacement.jpg" id="3_cphib"]
+[ext_resource type="Texture2D" uid="uid://chakmfoephwww" path="res://Textures/Sand/Ground052_1K-JPG_NormalDX.jpg" id="4_uxyx1"]
+[ext_resource type="Texture2D" uid="uid://f08pir41lg1c" path="res://Textures/Sand/Ground052_1K-JPG_Roughness.jpg" id="5_jnlo0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhgw8"]
+albedo_texture = ExtResource("1_q0ss0")
+roughness_texture = ExtResource("5_jnlo0")
+normal_enabled = true
+normal_texture = ExtResource("4_uxyx1")
+ao_enabled = true
+ao_texture = ExtResource("2_nb4e4")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_cphib")
+uv1_triplanar = true
+
+[node name="SandBox" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.17271, 0)
+use_collision = true
+size = Vector3(13, 2, 13)
+material = SubResource("StandardMaterial3D_xhgw8")

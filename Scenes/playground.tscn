@@ -1,0 +1,415 @@
+[gd_scene load_steps=12 format=3 uid="uid://dmtd45kcvr77s"]
+
+[ext_resource type="Texture2D" uid="uid://cmeqf0cwpukcg" path="res://Textures/skyBeach.png" id="1_offhf"]
+[ext_resource type="Script" path="res://Scenes/playground.gd" id="1_v8mqa"]
+[ext_resource type="PackedScene" uid="uid://dwuu5gldsb48m" path="res://Models/Sand/sand_box.tscn" id="2_gevwu"]
+[ext_resource type="PackedScene" uid="uid://37kt12rcqe05" path="res://player.tscn" id="2_u305y"]
+[ext_resource type="PackedScene" uid="uid://raifbmsaoyuy" path="res://Models/Sand/sand_cylinder.tscn" id="4_s5n6w"]
+[ext_resource type="PackedScene" uid="uid://cwb80ea08aluy" path="res://Models/Spikes/spikes.tscn" id="5_ecvcu"]
+[ext_resource type="PackedScene" uid="uid://dr12eq18kon58" path="res://Models/PalmTree/palm_tree.tscn" id="6_i0k6y"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_bfsk5"]
+panorama = ExtResource("1_offhf")
+
+[sub_resource type="Sky" id="Sky_lic32"]
+sky_material = SubResource("PanoramaSkyMaterial_bfsk5")
+
+[sub_resource type="Environment" id="Environment_j6us3"]
+background_mode = 2
+sky = SubResource("Sky_lic32")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u3oa8"]
+size = Vector3(1000, 124.078, 1000)
+
+[node name="Playground" type="Node3D"]
+script = ExtResource("1_v8mqa")
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_j6us3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_energy = 2.0
+shadow_enabled = true
+
+[node name="Terrain" type="Node3D" parent="."]
+
+[node name="SandBox" parent="Terrain" instance=ExtResource("2_gevwu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.02033, 0)
+size = Vector3(76.9813, 2, 80.9682)
+
+[node name="SandBox2" parent="Terrain" instance=ExtResource("2_gevwu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6679, 2.05746, -26.4711)
+size = Vector3(10.1286, 6.05851, 5.06079)
+
+[node name="SandBox5" parent="Terrain" instance=ExtResource("2_gevwu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.68044, 17.1321, 34.0957)
+size = Vector3(3.49081, 37.0909, 5.06079)
+
+[node name="SandBox6" parent="Terrain" instance=ExtResource("2_gevwu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45386, 17.1321, 34.0957)
+size = Vector3(3.49081, 37.0909, 5.06079)
+
+[node name="SandBox3" parent="Terrain" instance=ExtResource("2_gevwu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.381713, 0.763486, -26.4711)
+size = Vector3(10.1286, 3.49878, 5.06079)
+
+[node name="SandBox4" parent="Terrain" instance=ExtResource("2_gevwu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8696, -0.0843463, -26.4711)
+size = Vector3(10.1286, 1.8456, 5.06079)
+
+[node name="SandCylinder" parent="Terrain" instance=ExtResource("4_s5n6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.0074, 9.75466, -14.1643)
+radius = 3.69872
+height = 22.0946
+
+[node name="SandCylinder2" parent="Terrain" instance=ExtResource("4_s5n6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.0074, 9.75466, -1.66781)
+radius = 3.69872
+height = 22.0946
+
+[node name="SandCylinder3" parent="Terrain" instance=ExtResource("4_s5n6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.0074, 9.75466, 10.8766)
+radius = 3.69872
+height = 22.0946
+
+[node name="SandCylinder4" parent="Terrain" instance=ExtResource("4_s5n6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.0074, 9.75466, 23.2065)
+radius = 3.69872
+height = 22.0946
+
+[node name="SandCylinder5" parent="Terrain" instance=ExtResource("4_s5n6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.0074, 9.75466, 35.3237)
+radius = 3.69872
+height = 22.0946
+
+[node name="Spikes" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7982, -1.03013, -11.4887)
+
+[node name="Spikes2" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0794, -1.03013, -11.4887)
+
+[node name="Spikes3" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3708, -1.03013, -11.4887)
+
+[node name="Spikes4" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6503, -1.03013, -11.4887)
+
+[node name="Spikes5" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.903, -1.03013, -11.4887)
+
+[node name="Spikes6" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7982, -1.03013, -9.77259)
+
+[node name="Spikes7" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0794, -1.03013, -9.77259)
+
+[node name="Spikes8" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3708, -1.03013, -9.77259)
+
+[node name="Spikes9" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6503, -1.03013, -9.77259)
+
+[node name="Spikes10" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.903, -1.03013, -9.77259)
+
+[node name="Spikes11" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7982, -1.03013, -8.03315)
+
+[node name="Spikes12" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0794, -1.03013, -8.03315)
+
+[node name="Spikes13" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3708, -1.03013, -8.03315)
+
+[node name="Spikes14" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6503, -1.03013, -8.03315)
+
+[node name="Spikes15" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.903, -1.03013, -8.03315)
+
+[node name="Spikes16" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7982, -1.03013, -6.30859)
+
+[node name="Spikes17" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0794, -1.03013, -6.30859)
+
+[node name="Spikes18" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3708, -1.03013, -6.30859)
+
+[node name="Spikes19" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6503, -1.03013, -6.30859)
+
+[node name="Spikes20" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.903, -1.03013, -6.30859)
+
+[node name="Spikes21" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7982, -1.03013, -1.75223)
+
+[node name="Spikes22" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0794, -1.03013, -1.75223)
+
+[node name="Spikes23" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3708, -1.03013, -1.75223)
+
+[node name="Spikes24" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6503, -1.03013, -1.75223)
+
+[node name="Spikes25" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.903, -1.03013, -1.75223)
+
+[node name="Spikes26" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7982, -1.03013, -0.0361118)
+
+[node name="Spikes27" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0794, -1.03013, -0.0361118)
+
+[node name="Spikes28" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3708, -1.03013, -0.0361118)
+
+[node name="Spikes29" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6503, -1.03013, -0.0361118)
+
+[node name="Spikes30" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.903, -1.03013, -0.0361118)
+
+[node name="Spikes31" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7982, -1.03013, 1.70333)
+
+[node name="Spikes32" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0794, -1.03013, 1.70333)
+
+[node name="Spikes33" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3708, -1.03013, 1.70333)
+
+[node name="Spikes34" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6503, -1.03013, 1.70333)
+
+[node name="Spikes35" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.903, -1.03013, 1.70333)
+
+[node name="Spikes36" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7982, -1.03013, 3.42788)
+
+[node name="Spikes37" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0794, -1.03013, 3.42788)
+
+[node name="Spikes38" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3708, -1.03013, 3.42788)
+
+[node name="Spikes39" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6503, -1.03013, 3.42788)
+
+[node name="Spikes40" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.903, -1.03013, 3.42788)
+
+[node name="Spikes41" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7982, -1.03013, 8.33536)
+
+[node name="Spikes42" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0794, -1.03013, 8.33536)
+
+[node name="Spikes43" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3708, -1.03013, 8.33536)
+
+[node name="Spikes44" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6503, -1.03013, 8.33536)
+
+[node name="Spikes45" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.903, -1.03013, 8.33536)
+
+[node name="Spikes46" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7982, -1.03013, 10.0515)
+
+[node name="Spikes47" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0794, -1.03013, 10.0515)
+
+[node name="Spikes48" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3708, -1.03013, 10.0515)
+
+[node name="Spikes49" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6503, -1.03013, 10.0515)
+
+[node name="Spikes50" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.903, -1.03013, 10.0515)
+
+[node name="Spikes51" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7982, -1.03013, 11.7909)
+
+[node name="Spikes52" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0794, -1.03013, 11.7909)
+
+[node name="Spikes53" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3708, -1.03013, 11.7909)
+
+[node name="Spikes54" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6503, -1.03013, 11.7909)
+
+[node name="Spikes55" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.903, -1.03013, 11.7909)
+
+[node name="Spikes56" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7982, -1.03013, 13.5155)
+
+[node name="Spikes57" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0794, -1.03013, 13.5155)
+
+[node name="Spikes58" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3708, -1.03013, 13.5155)
+
+[node name="Spikes59" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6503, -1.03013, 13.5155)
+
+[node name="Spikes60" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.903, -1.03013, 13.5155)
+
+[node name="Spikes61" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7982, -1.03013, 18.2546)
+
+[node name="Spikes62" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0794, -1.03013, 18.2546)
+
+[node name="Spikes63" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3708, -1.03013, 18.2546)
+
+[node name="Spikes64" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6503, -1.03013, 18.2546)
+
+[node name="Spikes65" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.903, -1.03013, 18.2546)
+
+[node name="Spikes66" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7982, -1.03013, 19.9707)
+
+[node name="Spikes67" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0794, -1.03013, 19.9707)
+
+[node name="Spikes68" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3708, -1.03013, 19.9707)
+
+[node name="Spikes69" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6503, -1.03013, 19.9707)
+
+[node name="Spikes70" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.903, -1.03013, 19.9707)
+
+[node name="Spikes71" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7982, -1.03013, 21.7101)
+
+[node name="Spikes72" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0794, -1.03013, 21.7101)
+
+[node name="Spikes73" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3708, -1.03013, 21.7101)
+
+[node name="Spikes74" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6503, -1.03013, 21.7101)
+
+[node name="Spikes75" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.903, -1.03013, 21.7101)
+
+[node name="Spikes76" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7982, -1.03013, 23.4347)
+
+[node name="Spikes77" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0794, -1.03013, 23.4347)
+
+[node name="Spikes78" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3708, -1.03013, 23.4347)
+
+[node name="Spikes79" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6503, -1.03013, 23.4347)
+
+[node name="Spikes80" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.903, -1.03013, 23.4347)
+
+[node name="Spikes81" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7982, -1.03013, 27.9789)
+
+[node name="Spikes82" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0794, -1.03013, 27.9789)
+
+[node name="Spikes83" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3708, -1.03013, 27.9789)
+
+[node name="Spikes84" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6503, -1.03013, 27.9789)
+
+[node name="Spikes85" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.903, -1.03013, 27.9789)
+
+[node name="Spikes86" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7982, -1.03013, 29.695)
+
+[node name="Spikes87" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0794, -1.03013, 29.695)
+
+[node name="Spikes88" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3708, -1.03013, 29.695)
+
+[node name="Spikes89" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6503, -1.03013, 29.695)
+
+[node name="Spikes90" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.903, -1.03013, 29.695)
+
+[node name="Spikes91" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7982, -1.03013, 31.4344)
+
+[node name="Spikes92" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0794, -1.03013, 31.4344)
+
+[node name="Spikes93" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3708, -1.03013, 31.4344)
+
+[node name="Spikes94" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6503, -1.03013, 31.4344)
+
+[node name="Spikes95" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.903, -1.03013, 31.4344)
+
+[node name="Spikes96" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.7982, -1.03013, 33.159)
+
+[node name="Spikes97" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.0794, -1.03013, 33.159)
+
+[node name="Spikes98" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.3708, -1.03013, 33.159)
+
+[node name="Spikes99" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.6503, -1.03013, 33.159)
+
+[node name="Spikes100" parent="Terrain" instance=ExtResource("5_ecvcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.903, -1.03013, 33.159)
+
+[node name="PalmTree" parent="Terrain" instance=ExtResource("6_i0k6y")]
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 8.16534, -1.20419, 35.1522)
+
+[node name="PalmTree2" parent="Terrain" instance=ExtResource("6_i0k6y")]
+transform = Transform3D(0.04, 0, 0, 0, 0.04, 0, 0, 0, 0.04, 14.9363, -1.05746, 35.1522)
+
+[node name="PalmTree3" parent="Terrain" instance=ExtResource("6_i0k6y")]
+transform = Transform3D(-0.0155463, 0, 0.0368553, 0, 0.04, 0, -0.0368553, 0, -0.0155463, -0.288006, 35.5661, 34.1084)
+
+[node name="PalmTree4" parent="Terrain" instance=ExtResource("6_i0k6y")]
+transform = Transform3D(-0.0249306, 0, -0.0312804, 0, 0.04, 0, 0.0312804, 0, -0.0249306, -27.8369, 20.7306, 10.7876)
+
+[node name="PalmTree5" parent="Terrain" instance=ExtResource("6_i0k6y")]
+transform = Transform3D(0.0300007, 0, 0.0264567, 0, 0.04, 0, -0.0264567, 0, 0.0300007, -15.3789, 4.88371, -26.1651)
+
+[node name="PalmTree6" parent="Terrain" instance=ExtResource("6_i0k6y")]
+transform = Transform3D(0.058828, 0, 0.24298, 0, 0.25, 0, -0.24298, 0, 0.058828, 32.167, -1.12204, -29.0006)
+
+[node name="DeathPlane" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -22.577, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeathPlane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -104.395, 0)
+shape = SubResource("BoxShape3D_u3oa8")
+
+[node name="Player" parent="." instance=ExtResource("2_u305y")]
+
+[connection signal="body_entered" from="DeathPlane" to="." method="_on_death_plane_body_entered"]

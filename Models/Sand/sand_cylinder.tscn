@@ -1,0 +1,23 @@
+[gd_scene load_steps=7 format=3 uid="uid://raifbmsaoyuy"]
+
+[ext_resource type="Texture2D" uid="uid://b1r67u32e3u0s" path="res://Textures/Sand/Ground052_1K-JPG_Color.jpg" id="1_m5oi6"]
+[ext_resource type="Texture2D" uid="uid://cjaa6yl7yxtt1" path="res://Textures/Sand/Ground052_1K-JPG_AmbientOcclusion.jpg" id="2_kthjf"]
+[ext_resource type="Texture2D" uid="uid://b4a2iwwyylena" path="res://Textures/Sand/Ground052_1K-JPG_Displacement.jpg" id="3_kn7jr"]
+[ext_resource type="Texture2D" uid="uid://chakmfoephwww" path="res://Textures/Sand/Ground052_1K-JPG_NormalDX.jpg" id="4_s0mr3"]
+[ext_resource type="Texture2D" uid="uid://f08pir41lg1c" path="res://Textures/Sand/Ground052_1K-JPG_Roughness.jpg" id="5_1hq37"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t3y1j"]
+albedo_texture = ExtResource("1_m5oi6")
+roughness_texture = ExtResource("5_1hq37")
+normal_enabled = true
+normal_texture = ExtResource("4_s0mr3")
+ao_enabled = true
+ao_texture = ExtResource("2_kthjf")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_kn7jr")
+uv1_triplanar = true
+
+[node name="SandCylinder" type="CSGCylinder3D"]
+use_collision = true
+sides = 12
+material = SubResource("StandardMaterial3D_t3y1j")

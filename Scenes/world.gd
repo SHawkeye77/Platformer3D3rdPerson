@@ -10,4 +10,4 @@ func _ready():
 
 func _on_death_plane_body_entered(body):
 	if body.is_in_group("player"):
-		player.death() 
+		player.death()

@@ -1,23 +1,18 @@
 """
 TODO
-	- Fix/add the following known bugs/features
+	- Fix/add the following known bugs/features (or add to "things I could add" on website)
 		- Sometimes during the dash the camera goes weird such that the camera seems to be inside the character for a split second. Happens especially when the player is moving away from the camera.
-	- Upload to GitHub
-	- Upload to itch.io
-	- Update website with a link
 
 Notes
 	- Theme will be like a beach in the sky
 	- At one point, I asked a forum question for this project. I'll link it below.
 		- https://forum.godotengine.org/t/3d-dash-ghost-fading-effect-issue/46014
-	- Things I'd like to add eventually
-		- Make it so you can go around 90 degree turns while climbing 
 
 Included Features
 	- Jumping (including custom jump function, jump buffering, variable jump height, and coyote time)
 	- Dashing (with ghost fade effect)
 	- Wall jumping
-	- Wall climb (changing such that direction is reltive to player when wall climbing)
+	- Wall climb (changing such that direction is relative to player when wall climbing)
 	- Third person, turning direction-agnostic camera
 	- Smooth player turning
 	- Custom skybox
